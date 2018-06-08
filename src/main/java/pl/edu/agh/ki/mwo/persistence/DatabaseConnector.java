@@ -6,9 +6,12 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import pl.edu.agh.ki.mwo.model.Attendance;
+import pl.edu.agh.ki.mwo.model.Course;
 import pl.edu.agh.ki.mwo.model.DegreeCourse;
 import pl.edu.agh.ki.mwo.model.Grade;
 import pl.edu.agh.ki.mwo.model.StudentGroup;
+import pl.edu.agh.ki.mwo.model.Teacher;
 import pl.edu.agh.ki.mwo.model.Student;
 
 public class DatabaseConnector {
@@ -208,6 +211,55 @@ public class DatabaseConnector {
 		Query query = session.createQuery(hql);
 		List <Grade> grades = query.list();
 		return grades;
+	}
+//courses
+	public Iterable<Course> getCourses() {
+		String hql = "FROM Course";
+		Query query = session.createQuery(hql);
+		List <Course> courses = query.list();
+		
+		for (Course c: courses) {
+			System.out.println(c.getName());
+			
+		}
+		
+		return courses;
+	}
+
+	public Course getCourse(String courseId) {
+		String hql = "FROM Course C WHERE C.id="+courseId;
+		Query query = session.createQuery(hql);
+		List<Course> results = query.list();
+		return results.get(0);
+	}
+	
+
+	public void deleteCourse(String courseId) {
+		String hql = "FROM Course C WHERE C.id=" + courseId;
+		Query query = session.createQuery(hql);
+		List<Course> results = query.list();
+		Transaction transaction = session.beginTransaction();
+		for (Course course : results) {
+			session.delete(course);
+		}
+		transaction.commit();
+		
+	}
+	
+//teacher
+	public Teacher getTeacher(String teacherId) {
+		String hql = "FROM Teacher t WHERE t.id="+teacherId;
+		Query query = session.createQuery(hql);
+		List<Teacher> results = query.list();
+		return results.get(0);
+	}
+//attendance
+	public Iterable<Attendance> getAttendances() {
+		String hql = "FROM Attendance";
+		Query query = session.createQuery(hql);
+		List <Attendance> attendances = query.list();
+		
+		return attendances;
 	}
 
 

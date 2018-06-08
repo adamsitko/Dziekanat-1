@@ -13,14 +13,58 @@ public class Attendance {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int Id;
-	
+	private int id;
 	
 	@Column
-	private double attend;
+	private double studentId;
 	
+	@Column
+	private String classDate;
 	
+	@Column
+	private double attendance;
 	
+	@Column
+	private double courseId;
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	public double getStudentId() {
+		return studentId;
+	}
+
+	public void setId(double studentId) {
+		this.studentId = studentId;
+	}
+	
+	public String getClassDate() {
+		return classDate;
+	}
+
+	public void setClassDate(String classDate) {
+		this.classDate = classDate;
+	}
+	
+	public double getAttendance() {
+		return attendance;
+	}
+
+	public void setAttendance(double attend) {
+		this.attendance = attendance;
+	}
+	
+	public double getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(double courseId) {
+		this.courseId = courseId;
+	}
 
 }

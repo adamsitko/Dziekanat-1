@@ -19,6 +19,7 @@
 		<mapping class="pl.edu.agh.ki.mwo.model.Grade"/>
 		<mapping class="pl.edu.agh.ki.mwo.model.Teacher"/>
 		<mapping class="pl.edu.agh.ki.mwo.model.Course"/>
+		<mapping class="pl.edu.agh.ki.mwo.model.Attendance"/>
 		
 	</session-factory>
 </hibernate-configuration>

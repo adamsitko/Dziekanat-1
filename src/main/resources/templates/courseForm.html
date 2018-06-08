@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout">
+<body>
+
+    <div layout:fragment="content">
+    <div th:include="menuFragment" ></div>
+    	<br/><br/>
+	   			<form action="CreateCourse" method="POST">
+					<table>
+						<tr><td>Nazwa:</td><td><input type="text" name="courseName" th:value="${courseName}"/></td></tr>
+						<tr><td>Nazwisko:</td><td><input type="text" name="studentSurname" th:value="${studentSurname}" /></td></tr>
+						<tr><td>Adres:</td><td><input type="text" name="studentAdress" th:value="${studentAdress}" /></td></tr>
+						<tr><td>Data urodzenia:</td><td><input type="text" name="studentDateOfBirth" th:value="${studentDateOfBirth}" /></td></tr>
+						<tr><td>Rok studiów:</td><td><input type="text" name="studentYear" th:value="${studentYear}" /></td></tr>
+						<tr><td>Grupa Dziekanatowa:</td><td><select class="form-control" name="studentDegreeGroupName" id="studentDegreeGroupName">
+							<option value="-1">---</option>
+							<option th:each="studentGr: ${studentGroups}" th:value="${studentGr.id}" th:text="${studentGr.name}"></option>
+												</select></td></tr>
+					</table><br/><BR/>
+					<input type="submit" value="Utwórz"/>
+				</form>
+    </div>
+
+</body>
+</html>
