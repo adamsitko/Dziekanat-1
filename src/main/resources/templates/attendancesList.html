@@ -14,10 +14,10 @@
 			<tr><th>Id</th><th>Id studenta</th><th>Data</th><th>Obecność</th><th>Id kursu</th><th>Modyfikuj</th><th>Usun</th></tr>
 			<tr th:each="attendance: ${attendances}">
 				<td><span th:text="${attendance.id}" /></td>
-				<td><span th:text="${attendance.studentId}" /></td>
+				<td><span th:text="${attendance.student.id}" /></td>
 				<td><span th:text="${attendance.classDate}" /></td>
 				<td><span th:text="${attendance.attendance}" /></td>
-				<td><span th:text="${attendance.courseId}" /></td>
+				<td><span th:text="${attendance.course.name}" /></td>
 				<!-- <td><span th:text="none"/></td> -->
 
 		        <td>
@@ -35,7 +35,7 @@
 			</tr>
 		
 		
-		</table><br/><a href='AddStudent'>Dodaj studenta</a><br/><br/>
+		</table><br/><a href='AddAttendance'>Dodaj studenta</a><br/><br/>
 		
     </div>
 

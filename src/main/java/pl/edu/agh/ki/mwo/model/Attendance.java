@@ -2,9 +2,13 @@ package pl.edu.agh.ki.mwo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,17 +19,19 @@ public class Attendance {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column
-	private double studentId;
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "student_id",nullable=true)
+	private Student student;
 	
 	@Column
-	private String classDate;
+	private String class_date;
 	
 	@Column
 	private double attendance;
 	
-	@Column
-	private double courseId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "course_id",nullable=true)
+	private Course course;
 	
 	public int getId() {
 		return id;
@@ -35,36 +41,36 @@ public class Attendance {
 		this.id = id;
 	}
 	
-	public double getStudentId() {
-		return studentId;
+	public Student getStudent() {
+		return student;
 	}
 
-	public void setId(double studentId) {
-		this.studentId = studentId;
+	public void setId(Student student) {
+		this.student = student;
 	}
 	
 	public String getClassDate() {
-		return classDate;
+		return class_date;
 	}
 
-	public void setClassDate(String classDate) {
-		this.classDate = classDate;
+	public void setClassDate(String class_date) {
+		this.class_date = class_date;
 	}
 	
 	public double getAttendance() {
 		return attendance;
 	}
 
-	public void setAttendance(double attend) {
+	public void setAttendance(double attendance) {
 		this.attendance = attendance;
 	}
 	
-	public double getCourseId() {
-		return courseId;
+	public Course getCourse() {
+		return course;
 	}
 
-	public void setCourseId(double courseId) {
-		this.courseId = courseId;
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 }
